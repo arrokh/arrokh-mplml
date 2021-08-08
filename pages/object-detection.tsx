@@ -10,29 +10,45 @@ import { ObjectDetection } from '@tensorflow-models/coco-ssd';
 import * as tf from '@tensorflow/tfjs';
 import { useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, useToast } from '@chakra-ui/react';
 
 export default function Index() {
 	const [model, setModel] = useState<ObjectDetection>();
 	const webcamRef = useRef(null);
 	const [camWidth, camHeight] = [350, 500];
 	const [timeOutId, setTimeOutId] = useState<any>();
+	const toast = useToast();
 
 	async function loadModel() {
 		try {
 			const modelLoaded = await cocoSsd.load();
 			setModel(modelLoaded);
 			console.log('set loaded Model');
+			toast({
+				description: 'Success loaded model',
+				position: 'top',
+				status: 'success',
+			});
 		} catch (err) {
 			console.log(err);
 			console.log('failed load model');
+			toast({
+				description: 'Failed to load model',
+				position: 'top',
+				status: 'error',
+			});
 		}
 	}
 
 	async function predictionFunction() {
-		if (!model)
+		if (!model) {
+			toast({
+				description: 'Model is null',
+				position: 'top',
+				status: 'error',
+			});
 			return;
-
+		}
 
 		const predictions = await model.detect((document.getElementById('img') as HTMLImageElement));
 		const myCanvas = document.getElementById('myCanvas') as HTMLCanvasElement;
@@ -99,6 +115,7 @@ export default function Index() {
 		tf.ready().then(() => {
 			loadModel();
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return <LayoutWrapper>
@@ -122,7 +139,7 @@ export default function Index() {
 					screenshotQuality={1}
 					screenshotFormat="image/jpeg"
 					videoConstraints={{
-						facingMode: { exact: 'environment' },
+						facingMode: { ideal: 'environment' },
 						width: { ideal: camWidth },
 						height: { ideal: camHeight },
 					}}
