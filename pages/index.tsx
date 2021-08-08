@@ -1,5 +1,6 @@
 import { Box, Button, Center, Heading, Text, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
+import Router from 'next/router';
 
 export default function Index() {
 	return <Center h={'100vh'} flexDirection={'column'}>
@@ -29,15 +30,25 @@ export default function Index() {
 						Object Detection 📹
 					</Button>
 				</Link>
-				<Link passHref href={'/handwriting-number-detection'}>
-					<Button
-						as={'a'}
-						colorScheme={'linkedin'}
-						rounded={'full'}
-					>
-						Handwriting Detection ✍
-					</Button>
-				</Link>
+				<Button
+					as={'a'}
+					colorScheme={'linkedin'}
+					rounded={'full'}
+					size={'xs'}
+					onClick={() => Router.replace('https://www.instagram.com/nooroctaviananwar')}
+				>
+					Soon ... 👩‍💻
+				</Button>
+
+				{/*<Link passHref href={'/handwriting-number-detection'}>*/}
+				{/*	<Button*/}
+				{/*		as={'a'}*/}
+				{/*		colorScheme={'linkedin'}*/}
+				{/*		rounded={'full'}*/}
+				{/*	>*/}
+				{/*		Handwriting Detection ✍*/}
+				{/*	</Button>*/}
+				{/*</Link>*/}
 			</VStack>
 		</VStack>
 		<Box h={3}/>
