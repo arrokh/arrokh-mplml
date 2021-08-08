@@ -1,4 +1,4 @@
-import { Box, Center, Heading, VStack } from '@chakra-ui/react';
+import { Box, Container, Heading, VStack } from '@chakra-ui/react';
 import LayoutWrapper from '../components/layout/layout-wrapper';
 import DrawerPlayground from '../components/core/drawer-playground';
 import NavigationHeader from '../components/layout/navigation-header';
@@ -9,15 +9,17 @@ export default function Index() {
 		<NavigationHeader title={'Handwriting Detection'}/>
 		<ContentWrapper>
 			<VStack>
-				<Box>
+				<Box w={'100%'}>
 					<Heading m={2} size={'sm'}>
 						Prediction
 					</Heading>
 					<Box backgroundColor={'blackAlpha.50'} minH={120}>
-						<Center h={'inherit'} p={6}>
-							Warp quickly like a delighted moon.Creatures are the crewmates of the intelligent ionic
-							cannon.
-						</Center>
+						<Container centerContent>
+							<Box p={6}>
+								Warp quickly like a delighted moon.Creatures are the crewmates of the intelligent ionic
+								cannon.
+							</Box>
+						</Container>
 					</Box>
 				</Box>
 				<DrawerPlayground/>

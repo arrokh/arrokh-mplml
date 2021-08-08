@@ -25,7 +25,6 @@ export default function Index() {
 						as={'a'}
 						colorScheme={'linkedin'}
 						rounded={'full'}
-						size={'sm'}
 					>
 						Object Detection 📹
 					</Button>
@@ -35,7 +34,6 @@ export default function Index() {
 						as={'a'}
 						colorScheme={'linkedin'}
 						rounded={'full'}
-						size={'sm'}
 					>
 						Handwriting Detection ✍
 					</Button>
@@ -47,7 +45,7 @@ export default function Index() {
 			<Text fontSize={'x-small'} textAlign={'center'}>
 				© 2021 Noor Octavian Anwar
 				<br/>
-				All right reserved.
+				All right reserved
 			</Text>
 		</Box>
 	</Center>
