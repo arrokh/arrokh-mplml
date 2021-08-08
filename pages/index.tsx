@@ -6,7 +6,7 @@ export default function Index() {
 		justifyContent={'center'}
 		p={6}
 		spacing={12}
-		minH={'100vh'}
+		minH={'90vh'}
 	>
 		<Heading
 			fontWeight={0}
@@ -33,7 +33,7 @@ export default function Index() {
 					Object Detection 📹
 				</Button>
 			</Link>
-			<Link passHref href={'/handwriting-detection'}>
+			<Link passHref href={'/handwriting-number-detection'}>
 				<Button
 					as={'a'}
 					colorScheme={'linkedin'}
