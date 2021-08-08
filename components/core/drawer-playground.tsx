@@ -6,7 +6,7 @@ import { CheckCircleIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
 
 const DrawerPlayground: FC = () => {
 	const [isDrawingMode, setIsDrawingMode] = useBoolean(false);
-	const [canvasHeight,] = useState(200);
+	const [canvasHeight,] = useState(400);
 	const [canvas, setCanvas] = useState<fabric.Canvas>();
 
 	useEffect(() => {
@@ -14,7 +14,6 @@ const DrawerPlayground: FC = () => {
 			setIsDrawingMode.on();
 			canvas.setHeight(canvasHeight);
 			canvas.freeDrawingBrush.width = 5;
-
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [canvas]);
@@ -25,7 +24,7 @@ const DrawerPlayground: FC = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isDrawingMode])
 
-	return <Box>
+	return <Box w={'100%'}>
 		<Heading m={2} size={'sm'}>
 			Drawer
 		</Heading>
@@ -53,7 +52,7 @@ const DrawerPlayground: FC = () => {
 					aria-label={'Edit'}
 					leftIcon={isDrawingMode ? <EditIcon/> : <CheckCircleIcon/>}
 					onClick={setIsDrawingMode.toggle}
-					>
+				>
 					{isDrawingMode ? 'Drawing' : 'Edit'}
 				</Button>
 			</Flex>
