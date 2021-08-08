@@ -124,7 +124,18 @@ export default function Index() {
 	return <LayoutWrapper>
 		<NavigationHeader title={'Object Detection'}/>
 		<ContentWrapper>
-			<Box mx={'auto'} my={3}>
+			<Box mx={'auto'} mt={3}>
+				<Button
+					isLoading={!model}
+					loadingText={'Loading model asset'}
+					rounded={'full'}
+					colorScheme={timeOutId ? 'red' : 'linkedin'}
+					onClick={predictionFunction}
+				>
+					{timeOutId ? 'Stop' : 'Start'} Detection
+				</Button>
+			</Box>
+			<Box mx={'auto'} mt={3}>
 				<canvas
 					id="myCanvas"
 					width={camWidth}
@@ -147,17 +158,6 @@ export default function Index() {
 						height: { ideal: camHeight },
 					}}
 				/>
-			</Box>
-			<Box mx={'auto'}>
-				<Button
-					isLoading={!model}
-					loadingText={'Loading model asset'}
-					rounded={'full'}
-					colorScheme={timeOutId ? 'red' : 'linkedin'}
-					onClick={predictionFunction}
-				>
-					{timeOutId ? 'Stop' : 'Start'} Detection
-				</Button>
 			</Box>
 		</ContentWrapper>
 	</LayoutWrapper>
