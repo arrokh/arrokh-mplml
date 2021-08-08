@@ -13,7 +13,6 @@ export default function Index() {
 			<Heading
 				textAlign={'center'}
 				fontSize={'x-large'}
-				mt={'-6'}
 			>
 				{`"`} My Projects Learning <br/>
 				Machine Learning~<br/>
@@ -53,12 +52,10 @@ export default function Index() {
 			</VStack>
 		</VStack>
 		<Box h={3}/>
-		<Box position={'absolute'} bottom={10}>
-			<Text fontSize={'sm'} textAlign={'center'}>
-				© 2021 Noor Octavian Anwar
-				<br/>
-				All right reserved
-			</Text>
-		</Box>
+		<Text fontSize={'sm'} textAlign={'center'}>
+			© 2021 Noor Octavian Anwar
+			<br/>
+			All right reserved
+		</Text>
 	</Center>
 }
