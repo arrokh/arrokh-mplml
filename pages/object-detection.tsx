@@ -154,7 +154,7 @@ export default function Index() {
 					videoConstraints={{
 						facingMode: { ideal: 'environment' },
 						width: { exact: camWidth },
-						height: { exact: camHeight },
+						// height: { exact: camHeight },
 					}}
 				/>
 			</Container>
