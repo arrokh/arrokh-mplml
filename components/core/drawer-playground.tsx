@@ -6,7 +6,7 @@ import { CheckCircleIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
 
 const DrawerPlayground: FC = () => {
 	const [isDrawingMode, setIsDrawingMode] = useBoolean(false);
-	const [canvasHeight,] = useState(400);
+	const [canvasHeight,] = useState(300);
 	const [canvas, setCanvas] = useState<fabric.Canvas>();
 
 	useEffect(() => {
