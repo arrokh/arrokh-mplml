@@ -28,6 +28,7 @@ export default function Index() {
 				description: 'Success loaded model',
 				position: 'top',
 				status: 'success',
+				isClosable: true,
 			});
 		} catch (err) {
 			console.log(err);
@@ -36,6 +37,7 @@ export default function Index() {
 				description: 'Failed to load model',
 				position: 'top',
 				status: 'error',
+				isClosable:true,
 			});
 		}
 	}
@@ -46,6 +48,7 @@ export default function Index() {
 				description: 'Model is null',
 				position: 'top',
 				status: 'error',
+				isClosable:true,
 			});
 			return;
 		}
