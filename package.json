@@ -1,0 +1,33 @@
+{
+    "name": "simple-store",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start -p $PORT",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@chakra-ui/icons": "^1.0.14",
+        "@chakra-ui/react": "^1.6.5",
+        "@emotion/react": "^11",
+        "@emotion/styled": "^11",
+        "@tensorflow-models/coco-ssd": "^2.2.2",
+        "@tensorflow/tfjs": "^3.8.0",
+        "fabric": "^4.5.1",
+        "fabricjs-react": "^1.0.8",
+        "framer-motion": "^4",
+        "next": "11.0.1",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "react-webcam": "^5.2.4"
+    },
+    "devDependencies": {
+        "@types/fabric": "^4.5.1",
+        "@types/react": "17.0.16",
+        "eslint": "7.32.0",
+        "eslint-config-next": "11.0.1",
+        "typescript": "4.3.5"
+    }
+}
