@@ -122,6 +122,7 @@ export default function Index() {
 					screenshotQuality={1}
 					screenshotFormat="image/jpeg"
 					videoConstraints={{
+						facingMode: { exact: 'environment' },
 						width: { ideal: camWidth },
 						height: { ideal: camHeight },
 					}}
