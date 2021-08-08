@@ -37,7 +37,7 @@ export default function Index() {
 				description: 'Failed to load model',
 				position: 'top',
 				status: 'error',
-				isClosable:true,
+				isClosable: true,
 			});
 		}
 	}
@@ -48,7 +48,7 @@ export default function Index() {
 				description: 'Model is null',
 				position: 'top',
 				status: 'error',
-				isClosable:true,
+				isClosable: true,
 			});
 			return;
 		}
@@ -69,14 +69,12 @@ export default function Index() {
 			return;
 		}
 
-		const video = ((webcamRef?.current) as unknown as { video: any })?.video;
-		if (video)
-			ctx?.clearRect(
-				0,
-				0,
-				video.videoWidth,
-				video.videoHeight
-			);
+		ctx?.clearRect(
+			0,
+			0,
+			camWidth,
+			camHeight
+		);
 
 		if (predictions.length > 0) {
 			for (let n = 0; n < predictions.length; n++) {
@@ -84,7 +82,7 @@ export default function Index() {
 					let bboxLeft = predictions[n].bbox[0];
 					let bboxTop = predictions[n].bbox[1];
 					let bboxWidth = predictions[n].bbox[2];
-					let bboxHeight = predictions[n].bbox[3] - bboxTop;
+					let bboxHeight = predictions[n].bbox[3];
 
 					if (ctx) {
 						ctx.beginPath();
@@ -96,8 +94,8 @@ export default function Index() {
 							': ' +
 							Math.round(parseFloat(predictions[n].score.toString()) * 100) +
 							'%',
-							bboxLeft,
-							bboxTop
+							bboxLeft + 3,
+							bboxTop + 15,
 						);
 
 						ctx.rect(bboxLeft, bboxTop, bboxWidth, bboxHeight);
@@ -110,7 +108,7 @@ export default function Index() {
 			}
 		}
 
-		const to = setTimeout(() => predictionFunction(), 1000);
+		const to = setTimeout(() => predictionFunction(), 500);
 		setTimeOutId(to);
 	}
 
