@@ -10,7 +10,7 @@ import { ObjectDetection } from '@tensorflow-models/coco-ssd';
 import * as tf from '@tensorflow/tfjs';
 import { useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
-import { Box, Button, useToast } from '@chakra-ui/react';
+import { Box, Button, Container, useToast } from '@chakra-ui/react';
 
 export default function Index() {
 	const [model, setModel] = useState<ObjectDetection>();
@@ -122,7 +122,7 @@ export default function Index() {
 	return <LayoutWrapper>
 		<NavigationHeader title={'Object Detection'}/>
 		<ContentWrapper>
-			<Box mx={'auto'} mt={3}>
+			<Box mx={'auto'} marginY={3}>
 				<Button
 					isLoading={!model}
 					loadingText={'Loading model asset'}
@@ -133,12 +133,13 @@ export default function Index() {
 					{timeOutId ? 'Stop' : 'Start'} Detection
 				</Button>
 			</Box>
-			<Box mx={'auto'} mt={3}>
+			<Container centerContent>
 				<canvas
 					id="myCanvas"
-					width={camWidth}
-					height={camHeight}
+					width={camWidth - 6}
+					height={camHeight - 12}
 					style={{
+						// backgroundColor: '#ff000038',
 						backgroundColor: 'transparent',
 						zIndex: 999,
 						position: 'absolute',
@@ -152,11 +153,11 @@ export default function Index() {
 					screenshotFormat="image/jpeg"
 					videoConstraints={{
 						facingMode: { ideal: 'environment' },
-						width: { ideal: camWidth },
-						height: { ideal: camHeight },
+						width: { exact: camWidth },
+						height: { exact: camHeight },
 					}}
 				/>
-			</Box>
+			</Container>
 		</ContentWrapper>
 	</LayoutWrapper>
 }

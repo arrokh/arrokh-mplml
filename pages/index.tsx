@@ -11,15 +11,16 @@ export default function Index() {
 			minH={'90vh'}
 		>
 			<Heading
-				fontWeight={0}
 				textAlign={'center'}
+				fontSize={'x-large'}
 				mt={'-6'}
 			>
-				My Projects Learning <br/>
-				Machine Learning<br/>
-				Give It Try<br/>
+				{`"`} My Projects Learning <br/>
+				Machine Learning~<br/>
+				Give It Try! {`"`}<br/>
 				🚀
 			</Heading>
+
 			<VStack>
 				<Link passHref href={'/object-detection'}>
 					<Button
@@ -52,8 +53,8 @@ export default function Index() {
 			</VStack>
 		</VStack>
 		<Box h={3}/>
-		<Box>
-			<Text fontSize={'x-small'} textAlign={'center'}>
+		<Box position={'absolute'} bottom={10}>
+			<Text fontSize={'sm'} textAlign={'center'}>
 				© 2021 Noor Octavian Anwar
 				<br/>
 				All right reserved
