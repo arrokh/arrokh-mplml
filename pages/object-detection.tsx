@@ -15,7 +15,7 @@ import { Box, Button, Container, useToast } from '@chakra-ui/react';
 export default function Index() {
 	const [model, setModel] = useState<ObjectDetection>();
 	const webcamRef = useRef(null);
-	const [camWidth, camHeight] = [350, 500];
+	const [clientSize, setClientSize] = useState<Array<number>>([]);
 	const [timeOutId, setTimeOutId] = useState<any>();
 	const toast = useToast();
 
@@ -63,8 +63,8 @@ export default function Index() {
 			ctx?.clearRect(
 				0,
 				0,
-				camWidth,
-				camHeight
+				clientSize[0],
+				clientSize[1],
 			);
 			return;
 		}
@@ -72,8 +72,8 @@ export default function Index() {
 		ctx?.clearRect(
 			0,
 			0,
-			camWidth,
-			camHeight
+			clientSize[0],
+			clientSize[1],
 		);
 
 		if (predictions.length > 0) {
@@ -94,8 +94,8 @@ export default function Index() {
 							': ' +
 							Math.round(parseFloat(predictions[n].score.toString()) * 100) +
 							'%',
-							bboxLeft + 3,
-							bboxTop + 15,
+							clientSize[0],
+							clientSize[1],
 						);
 
 						ctx.rect(bboxLeft, bboxTop, bboxWidth, bboxHeight);
@@ -111,6 +111,15 @@ export default function Index() {
 		const to = setTimeout(() => predictionFunction(), 500);
 		setTimeOutId(to);
 	}
+
+	useEffect(() => {
+		if (webcamRef !== null && webcamRef.current !== null) {
+			// @ts-ignore
+			const newClientSize = [webcamRef.current.video.clientWidth, webcamRef.current.video.clientHeight,];
+			setClientSize(newClientSize);
+		}
+
+	}, [webcamRef, timeOutId]);
 
 	useEffect(() => {
 		tf.ready().then(() => {
@@ -136,13 +145,13 @@ export default function Index() {
 			<Container centerContent>
 				<canvas
 					id="myCanvas"
-					width={camWidth - 6}
-					height={camHeight - 12}
 					style={{
 						// backgroundColor: '#ff000038',
 						backgroundColor: 'transparent',
 						zIndex: 999,
 						position: 'absolute',
+						width: clientSize[0],
+						height: clientSize[1],
 					}}
 				/>
 				<Webcam
@@ -153,8 +162,6 @@ export default function Index() {
 					screenshotFormat="image/jpeg"
 					videoConstraints={{
 						facingMode: { ideal: 'environment' },
-						width: { exact: camWidth },
-						// height: { exact: camHeight },
 					}}
 				/>
 			</Container>
